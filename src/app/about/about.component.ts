@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, 
+              private router: Router) {
+
+    this.route.params.subscribe(resp => console.log(resp.id));
+   }
 
   ngOnInit() {
   }
 
+  sendMeHome() {
+    this.router.navigate(['']);
+  }
 }
